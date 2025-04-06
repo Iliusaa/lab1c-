@@ -1,0 +1,14 @@
+C:\Users\TheWorld\Desktop\lab1c#\obj\Debug\net8.0\lab1c#.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\TheWorld\Desktop\lab1c#\obj\Debug\net8.0\lab1c#.AssemblyInfoInputs.cache
+C:\Users\TheWorld\Desktop\lab1c#\obj\Debug\net8.0\lab1c#.AssemblyInfo.cs
+C:\Users\TheWorld\Desktop\lab1c#\obj\Debug\net8.0\lab1c#.csproj.CoreCompileInputs.cache
+C:\Users\TheWorld\Desktop\lab1c#\bin\Debug\net8.0\lab1c#.exe
+C:\Users\TheWorld\Desktop\lab1c#\bin\Debug\net8.0\lab1c#.deps.json
+C:\Users\TheWorld\Desktop\lab1c#\bin\Debug\net8.0\lab1c#.runtimeconfig.json
+C:\Users\TheWorld\Desktop\lab1c#\bin\Debug\net8.0\lab1c#.dll
+C:\Users\TheWorld\Desktop\lab1c#\bin\Debug\net8.0\lab1c#.pdb
+C:\Users\TheWorld\Desktop\lab1c#\obj\Debug\net8.0\lab1c#.dll
+C:\Users\TheWorld\Desktop\lab1c#\obj\Debug\net8.0\refint\lab1c#.dll
+C:\Users\TheWorld\Desktop\lab1c#\obj\Debug\net8.0\lab1c#.pdb
+C:\Users\TheWorld\Desktop\lab1c#\obj\Debug\net8.0\lab1c#.genruntimeconfig.cache
+C:\Users\TheWorld\Desktop\lab1c#\obj\Debug\net8.0\ref\lab1c#.dll
