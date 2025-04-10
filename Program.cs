@@ -47,10 +47,14 @@ class Coctails
         while (true)
         {
             Console.WriteLine("Enter amount of ingredients (max 3):");
-            if (!byte.TryParse(Console.ReadLine(), out ingredientCount) || ingredientCount < 1 || ingredientCount > 3)
+            string l = Console.ReadLine()!;
+            if (byte.TryParse(l, out ingredientCount))
             {
-                Console.WriteLine("Invalid input. Must be a number between 1 and 3.");
-                continue;
+                if (ingredientCount < 1 || ingredientCount > 3)
+                {
+                    Console.WriteLine("Invalid input. Must be a number between 1 and 3.");
+                    continue;
+                }
             }
             break;
         }
@@ -60,11 +64,15 @@ class Coctails
         {
             while (true)
             {
-                Console.Write($"Enter alcohol degree of ingredient {i + 1} (1-20): ");
-                if (int.TryParse(Console.ReadLine(), out int t) && t >= 1 && t <= 20)
+                Console.Write($"Enter alcohol degree of ingredient {i + 1} (1–20): ");
+                string input = Console.ReadLine()!;
+                if (int.TryParse(input, out int f))
                 {
-                    gradus.Add(t);
-                    break;
+                    if (f >= 1 && f <= 20)
+                    {
+                        gradus.Add(f);
+                        break;
+                    }
                 }
                 Console.WriteLine("Invalid input. Must be a number between 1 and 20.");
             }
@@ -76,11 +84,14 @@ class Coctails
             while (true)
             {
                 Console.Write($"Enter price of ingredient {i + 1} (1-200): ");
-                string t = Console.ReadLine();
-                if (int.TryParse(t,out int g)) //&& t >= 1 && t <= 200)
+                string t = Console.ReadLine()!;
+                if (int.TryParse(t, out int g))
                 {
-                    price.Add(g);
-                    break;
+                    if (g >= 1 && g <= 200)
+                    {
+                        price.Add(g);
+                        break;
+                    }
                 }
                 Console.WriteLine("Invalid input. Must be a number between 1 and 200.");
             }
@@ -218,8 +229,9 @@ class Program
         Console.WriteLine($"Total price of all cocktails: {totalPrice}");
         Console.WriteLine("client1");
         Coctails.client(150, bar[0]);
-        if (bar.Count > 2){
-        Console.WriteLine("client2");
+        if (bar.Count > 2)
+        {
+            Console.WriteLine("client2");
             Coctails.client(80, bar[1]);
         }
         Console.WriteLine("client3");
