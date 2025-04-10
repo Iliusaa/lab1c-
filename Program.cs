@@ -34,9 +34,9 @@ class Coctails
         {
             Console.WriteLine("Enter name of cocktail:");
             string nameInput = Console.ReadLine()!;
-            if (string.IsNullOrWhiteSpace(nameInput))
+            if (nameInput.Length <= 0)
             {
-                Console.WriteLine("Name cannot be empty.");
+                Console.WriteLine("Invalid input. Name cannot be empty.");
                 continue;
             }
             name = nameInput;
@@ -151,7 +151,7 @@ class Coctails
 
     public void PrintInfo()
     {
-        Console.WriteLine($"Coctail count: {CoctailCount}");
+
         Console.WriteLine($"Name: {this.Name}");
         Console.WriteLine($"Ingredients: {this.Ingredients}");
         Console.Write("Gradus: ");
@@ -165,19 +165,9 @@ class Coctails
         {
             Console.Write($"{p} ");
         }
-        Console.WriteLine("\n");
+        Console.WriteLine();
+        Console.WriteLine();
     }
-
-    public static string CompareComplexity(Coctails a, Coctails b)
-    {
-        if (a.Ingredients > b.Ingredients)
-            return $"{a.Name} is more complex than {b.Name}";
-        else if (a.Ingredients < b.Ingredients)
-            return $"{b.Name} is more complex than {a.Name}";
-        else
-            return $"{a.Name} and {b.Name} have the same complexity";
-    }
-
     public int TotalPrice()
     {
         int sum = 0;
@@ -195,32 +185,27 @@ class Program
 
         List<Coctails> bar = new List<Coctails>()
         {
-            new ("test", 2, new List<int> { 1, 2 }, new List<int> { 1, 2 }),
+            new Coctails(name: "test", ingredientCount: 2, gradus: new List<int> { 1, 2 }, price: new List<int> { 1, 2 }),
             new()
         };
 
-        for (int i = 0; i < bar.Count - 1; i++)
-        {
-            bar[i].Name = $"Random{i + 1}";
-            bar[i].Ingredients = (byte)rand.Next(1, 4);
-            bar[i].Gradus = new List<int>();
-            bar[i].PriceIngredients = new List<int>();
-            for (int j = 0; j < bar[i].Ingredients; j++)
+        Coctails randCoctail= new Coctails();
+            randCoctail.Name = "Random coctail ";
+            randCoctail.Ingredients = (byte)rand.Next(1, 4);
+            randCoctail.Gradus = new List<int>();
+            randCoctail.PriceIngredients = new List<int>();
+            for (int j = 0; j < randCoctail.Ingredients; j++)
             {
-                bar[i].Gradus.Add(rand.Next(1, 21));
-                bar[i].PriceIngredients.Add(rand.Next(1, 201));
+                randCoctail.Gradus.Add(rand.Next(1, 21));
+                randCoctail.PriceIngredients.Add(rand.Next(1, 201));
             }
-        }
+        bar.Add(randCoctail);
 
-        Console.WriteLine("Random cocktails:");
+        bar.Add(Coctails.InputCoctail());
         foreach (var c in bar)
         {
             c.PrintInfo();
         }
-
-        bar[bar.Count - 1] = Coctails.InputCoctail();
-        bar[bar.Count - 1].PrintInfo();
-
         int totalPrice = 0;
         foreach (var c in bar)
         {
@@ -229,14 +214,9 @@ class Program
         Console.WriteLine($"Total price of all cocktails: {totalPrice}");
         Console.WriteLine("client1");
         Coctails.client(150, bar[0]);
-        if (bar.Count > 2)
-        {
-            Console.WriteLine("client2");
-            Coctails.client(80, bar[1]);
-        }
         Console.WriteLine("client3");
         Coctails.client(300, bar[bar.Count - 1]);
 
-        Console.WriteLine($"\nTotal number of created cocktails: {Coctails.CoctailCount}");
+        Console.WriteLine($"Total number of created cocktails: {Coctails.CoctailCount}");
     }
 }
