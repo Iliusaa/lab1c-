@@ -76,9 +76,10 @@ class Coctails
             while (true)
             {
                 Console.Write($"Enter price of ingredient {i + 1} (1-200): ");
-                if (int.TryParse(Console.ReadLine(), out int t) && t >= 1 && t <= 200)
+                string t = Console.ReadLine();
+                if (int.TryParse(t,out int g)) //&& t >= 1 && t <= 200)
                 {
-                    price.Add(t);
+                    price.Add(g);
                     break;
                 }
                 Console.WriteLine("Invalid input. Must be a number between 1 and 200.");
@@ -206,16 +207,8 @@ class Program
             c.PrintInfo();
         }
 
-        // Последний коктейль — пользовательский (poetomy - 1)
         bar[bar.Count - 1] = Coctails.InputCoctail();
         bar[bar.Count - 1].PrintInfo();
-
-        // Сравнение сложности (ингредиентов)
-        Console.WriteLine("Proverka na slojnost cokteilia:");
-        for (int i = 0; i < bar.Count - 1; i++)
-        {
-            Console.WriteLine(Coctails.CompareComplexity(bar[i], bar[bar.Count - 1]));
-        }
 
         int totalPrice = 0;
         foreach (var c in bar)
